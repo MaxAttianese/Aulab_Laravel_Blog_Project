@@ -82,7 +82,11 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
-    {
+    {   
+        if($category->articles) {
+
+            return redirect()->back()->with(["insuccess" => "Impossibile cancellare la categoria"]); 
+        }
         $category->delete();
 
         return redirect()->back()->with(["success" => "Categoria cancellata con successo"]);

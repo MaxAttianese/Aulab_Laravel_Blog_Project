@@ -13,6 +13,8 @@
           {{auth()->user()->name}}
           </a>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{route('account')}}">Il mio Account</a></li>
+            <li><a class="dropdown-item" href="{{route('account.articles')}}">I miei Articoli</a></li>
             <li><a class="dropdown-item" href="{{route('articles.create')}}">Crea Articolo</a></li>
             <li><a class="dropdown-item" href="{{route('categories.create')}}">Crea Categoria</a></li>
             <li><form action="/logout" method="POST">

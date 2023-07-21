@@ -19,11 +19,11 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="category" class="form-label">Categoria</label>
-                            <select class="form-control" id="category" name="category" @if($article) value="{{old('category', $article->category)}}" @else value="{{old('category')}}" @endif>
-                                <option @if($article) value="{{$article->category}}" @endif> @if($article) {{$article->category}} @endif </option>
+                            <label for="category_id" class="form-label">Categoria</label>
+                            <select class="form-control" id="category_id" name="category_id" @if($article) value="{{old('category_id', $article->category->name)}}" @else value="{{old('category_id')}}" @endif>
+                                <option @if($article) value="{{$article->category->id}}" @endif> @if($article) {{$article->category->name}} @endif </option>
                                 @foreach($categories as $category)
-                                <option value="{{$category->name}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                             @error("category") <span class="small text-danger fst-italic">{{$message}}</span> @enderror

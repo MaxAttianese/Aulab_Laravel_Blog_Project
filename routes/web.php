@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function() {
 
 
     Route::get("/account", [AccountController::class, "accountView"])->name("account");
+    Route::get("/account/articles", [AccountController::class, "accountArticles"])->name("account.articles");
+
 
 
     Route::resource("categories", App\Http\Controllers\CategoryController::class);

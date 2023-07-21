@@ -25,7 +25,7 @@ class StoreArticleRequest extends FormRequest
 
             "title" => "required|max:150",
 
-            "category" => "required|max:20",
+            "category_id" => "required|max:20",
             
             "description" => "required|max:150",
             
@@ -39,7 +39,7 @@ class StoreArticleRequest extends FormRequest
 
             "title.required" => "Il campo è obbligatorio",
 
-            "category.required" => "Il campo è obbligatorio",
+            "category_id.required" => "Il campo è obbligatorio",
             
             "description.required" => "Il campo è obbligatorio",
             

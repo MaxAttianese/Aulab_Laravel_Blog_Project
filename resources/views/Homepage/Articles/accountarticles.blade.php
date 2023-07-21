@@ -1,26 +1,22 @@
 <x-main :title="$title">
     <main>
 
-        <section class="container pt-2 pb-5">
+        <section class="container pt-2 pb-5 mt-5">
 
             <div>
                 <h2 class="fw-bold text-center pt-4">
                     {{$title}}
                 </h2>
             </div>
-            @if(session()->has("success"))
-            <x-flashmessage />
-            @endif
             <div class="row pt-5">
                 @if($articles)
                 @foreach($articles as $id => $article)
-                <x-card :category="$article->category->name" :title="$article['title']" :articleId="$article['id']" :article="$article" />
+                <x-card :category="$article->category->name" :title="$article->title" :articleId="$article->id" :article="$article" />
                 @endforeach
                 @else
                 <span class="text-center">Nessun articolo disponibile</span>
                 @endif
             </div>
-            {{$articles->links()}}
         </section>
 
         <section class="container py-5">

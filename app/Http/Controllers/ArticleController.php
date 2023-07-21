@@ -49,7 +49,8 @@ class ArticleController extends Controller
         //dd($request);
         $article = new Article();
         $article->title = $request->title;
-        $article->category = $request->category;
+        $article->user_id = auth()->user()->id;
+        $article->category_id = $request->category_id;
         $article->description = $request->description;
         $article->body = $request->body;
         $article->save();
@@ -88,6 +89,12 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        if($article->user_id != auth()->user()->id) {
+
+            abort(403);
+
+        }
+
         $title = "Modifica Articolo";
 
         $categories = Category::orderBy("name", "ASC")->get();
@@ -102,7 +109,7 @@ class ArticleController extends Controller
     {
 
         $article->title = $request->title;
-        $article->category = $request->category;
+        $article->category_id = $request->category_id;
         $article->description = $request->description;
         $article->body = $request->body;
         $article->save();
@@ -129,6 +136,12 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        if($article->user_id != auth()->user()->id) {
+
+            abort(403);
+
+        }
+        
         $article->delete();
 
         return redirect()->back()->with(["success" => "Articolo cancellato con successo"]);
