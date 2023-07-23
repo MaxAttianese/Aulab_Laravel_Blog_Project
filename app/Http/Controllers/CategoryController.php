@@ -83,10 +83,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {   
-        if($category->articles) {
+        $category->articles()->detach();
 
-            return redirect()->back()->with(["insuccess" => "Impossibile cancellare la categoria"]); 
-        }
         $category->delete();
 
         return redirect()->back()->with(["success" => "Categoria cancellata con successo"]);

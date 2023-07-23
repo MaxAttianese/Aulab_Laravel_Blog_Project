@@ -17,7 +17,7 @@
                 <div class="col-12 col-md-6 col-xl-4 pb-2">
                     <div class="card">
                         <div class="card-header small">
-                            {{$article->category->name}}
+                        <div>@foreach($article->categories as $category) <span class="fst-italic pe-1">.{{$category->name}}</span> @endforeach</div>
                         </div>
                         <div class="card-body d-flex flex-column text-center">
                             @if($article->image)

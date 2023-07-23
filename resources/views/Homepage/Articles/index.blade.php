@@ -14,7 +14,7 @@
             <div class="row pt-5">
                 @if($articles)
                 @foreach($articles as $id => $article)
-                <x-card :category="$article->category->name" :title="$article['title']" :articleId="$article['id']" :article="$article" />
+                <x-card :categories="$article->categories" :title="$article['title']" :articleId="$article['id']" :article="$article" />
                 @endforeach
                 @else
                 <span class="text-center">Nessun articolo disponibile</span>

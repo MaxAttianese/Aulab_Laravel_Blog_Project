@@ -47,13 +47,21 @@ class ArticleController extends Controller
     {   
 
         //dd($request);
-        $article = new Article();
+
+        $data = array_merge($request->all(), ["user_id" => auth()->user()->id]);
+
+        $article = Article::create($data);
+
+        $article->categories()->attach($request->categories);
+
+        /*$article = new Article();
         $article->title = $request->title;
         $article->user_id = auth()->user()->id;
-        $article->category_id = $request->category_id;
         $article->description = $request->description;
         $article->body = $request->body;
-        $article->save();
+        $article->categories()->attach($request->categories);
+
+        $article->save();*/
 
 
         if($request->hasFile('image') && $request->file('image')->isValid()){
@@ -89,12 +97,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        if($article->user_id != auth()->user()->id) {
-
-            abort(403);
-
-        }
-
+    
         $title = "Modifica Articolo";
 
         $categories = Category::orderBy("name", "ASC")->get();
@@ -109,9 +112,13 @@ class ArticleController extends Controller
     {
 
         $article->title = $request->title;
-        $article->category_id = $request->category_id;
         $article->description = $request->description;
         $article->body = $request->body;
+
+        $article->categories()->detach();
+
+        $article->categories()->attach($request->categories);
+
         $article->save();
 
 
@@ -136,11 +143,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        if($article->user_id != auth()->user()->id) {
 
-            abort(403);
-
-        }
+        $article->categories()->detach();
         
         $article->delete();
 

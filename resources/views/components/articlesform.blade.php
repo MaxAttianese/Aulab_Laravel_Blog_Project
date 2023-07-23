@@ -18,16 +18,16 @@
                             @error("title") <span class="small text-danger fst-italic">{{$message}}</span> @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="category_id" class="form-label">Categoria</label>
-                            <select class="form-control" id="category_id" name="category_id" @if($article) value="{{old('category_id', $article->category->name)}}" @else value="{{old('category_id')}}" @endif>
-                                <option @if($article) value="{{$article->category->id}}" @endif> @if($article) {{$article->category->name}} @endif </option>
-                                @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                @endforeach
-                            </select>
-                            @error("category") <span class="small text-danger fst-italic">{{$message}}</span> @enderror
-
+                        <div class="pt-1 pb-2">
+                            <p>Categorie:</p>
+                        @foreach($categories as $category)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="categories[]" value="{{$category->id}}" id="flexCheckDefault" @if($article) @if($article->categories->contains($category->id)) checked @endif @endif>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{$category->name}}
+                            </label>
+                        </div>
+                        @endforeach
                         </div>
 
                         <div class="mb-3">
@@ -51,14 +51,10 @@
                         </div>
 
                         <div class="pb-3">
-                            @if(session()->has("success"))
-
-                            @else
                             @if($article)
-                            <button type="submit" class="btn btn-primary px-4">Modifica</button> 
+                            <button type="submit" class="btn btn-primary px-4">Modifica</button>
                             @else
                             <button type="submit" class="btn btn-primary px-4">Crea</button>
-                            @endif
                             @endif
                         </div>
                     </div>

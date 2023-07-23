@@ -37,7 +37,7 @@
                     </tr>
                     <tr>
                         <td class="border-bottom d-flex justify-content-between align-items-center">
-                            <div><p class="fst-italic">Articoli:</p></div> <div>@foreach($category->articles as $article)<span class="fst-italic px-1"> .{{$article->title}}</span> @endforeach</div>
+                            <div><p class="fst-italic">Articoli ({{$category->articles->count()}}):</p></div> <div>@foreach($category->articles as $article)<span class="fst-italic px-1"> .{{$article->title}}</span> @endforeach</div>
                         </td>
                         <td>
                             

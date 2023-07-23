@@ -1,10 +1,11 @@
 <div class="col-12 col-md-6 col-xl-3 py-3">
-    <div class="card" style="height: 200px">
-        <div class="card-header small d-flex justify-content-between">
-            <span>{{$category}}</span><div class="fst-italic"><span class="small">Scritto da: </span> <span class="fw-bold">{{$article->user->name}}</span></div>
+    <div class="card" style="height: 250px">
+        <div class="card-header small">
+             <div class="fst-italic text-end"><span class="small">Scritto da: </span> <span class="fw-bold">{{$article->user->name}}</span></div>
         </div>
         <div class="card-body d-flex flex-column">
-            <h5 class="card-title pb-3">{{$title}}</h5>
+            <h5 class="card-title">{{$title}}</h5>
+            <div class="pb-4">@foreach($categories as $category) <span class="small fst-italic pe-1">.{{$category->name}}</span> @endforeach</div>
             <a href="{{route('articles.show', $articleId)}}" class="btn btn-primary">Articolo Completo</a>
         </div>
         @if($article->user_id == auth()->user()->id)
