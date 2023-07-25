@@ -1,12 +1,19 @@
-                <form class="row" @if($article) action="{{route('articles.update', $article)}}" @else action="{{route('articles.store')}}" @endif method="POST" enctype="multipart/form-data">
+<x-main :title="$title">
+    <main>
+        <section class="container pt-5">
+
+            <div>
+                <a class="text-end ps-5 fst-italic link-underline link-underline-opacity-0" href="{{route('articles.index')}}">Indietro</a>
+            </div>
+            <form class="row" action="{{$action}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @if($article)
+                    @if($method)
                     @method('PUT')
                     @endif
                     <div class="col-0 col-md-3"></div>
                     <div class="col-12 col-md-6">
 
-                        <h2 class="fw-bold text-center">Inserisci Articolo</h2>
+                        <h2 class="fw-bold text-center">{{$title}}</h2>
 
                         @if(session()->has("success"))
                         <x-flashmessage />
@@ -14,7 +21,7 @@
 
                         <div class="mb-3">
                             <label for="title" class="form-label">Titolo</label>
-                            <input type="text" class="form-control" id="title" name="title" @if($article) value="{{old('title', $article->title)}}" @else value="{{old('title')}}" @endif>
+                            <input type="text" class="form-control" id="title" name="title" value="{{old('title', $article->title)}}">
                             @error("title") <span class="small text-danger fst-italic">{{$message}}</span> @enderror
                         </div>
 
@@ -32,7 +39,7 @@
 
                         <div class="mb-3">
                             <label for="description" class="form-label">Descrizione</label>
-                            <input type="text" class="form-control" id="description" name="description" @if($article) value="{{old('description', $article->description)}}" @else value="{{old('description')}}" @endif>
+                            <input type="text" class="form-control" id="description" name="description" value="{{old('description', $article->description)}}">
                             @error("description") <span class="small text-danger fst-italic">{{$message}}</span> @enderror
 
                         </div>
@@ -45,18 +52,17 @@
 
                         <div class="mb-3">
                             <label for="body" class="form-label">Corpo</label>
-                            <textarea type="text" rows="4" cols="50" class="form-control" id="body" name="body">@if($article) {{old("body", $article->body)}} @else {{old("body")}} @endif</textarea>
+                            <textarea type="text" rows="4" cols="50" class="form-control" id="body" name="body">{{old("body", $article->body)}}</textarea>
                             @error("body") <span class="small text-danger fst-italic">{{$message}}</span> @enderror
 
                         </div>
 
                         <div class="pb-3">
-                            @if($article)
-                            <button type="submit" class="btn btn-primary px-4">Modifica</button>
-                            @else
-                            <button type="submit" class="btn btn-primary px-4">Crea</button>
-                            @endif
+                            <button type="submit" class="btn btn-primary px-4">{{$buttoName}}</button>
                         </div>
                     </div>
                     <div class="col-0 col-md-3"></div>
                 </form>
+        </section>
+    </main>
+</x-main>

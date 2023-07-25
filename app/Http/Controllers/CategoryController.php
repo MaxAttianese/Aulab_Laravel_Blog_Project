@@ -29,9 +29,19 @@ class CategoryController extends Controller
     {
         $title = "Crea Categoria";
 
-        $category = "";
+        $titlePage = "Crea categoria";
 
-        return view("Homepage.Categories.create", compact("title","category"));
+        $action = route("categories.store");
+
+        $placeholder = "Crea categoria";
+
+        $buttoName = "Crea";
+
+        $category = new Category;
+
+        $method = "";
+
+        return view("Homepage.Categories.form", compact("title", "titlePage", "action", "placeholder", "buttoName", "category", "method"));
     
     }
 
@@ -62,7 +72,17 @@ class CategoryController extends Controller
 
         $title = "Modifica Categoria";
 
-        return view("Homepage.Categories.edit", compact("title", "category"));
+        $titlePage = "Modifica categoria";
+
+        $action = route("categories.update", $category);
+
+        $placeholder = "Modifica categoria";
+
+        $buttoName = "Modifica";
+
+        $method = "PUT";
+
+        return view("Homepage.Categories.form", compact("title", "titlePage", "action", "placeholder", "buttoName", "category", "method"));
     
     }
 

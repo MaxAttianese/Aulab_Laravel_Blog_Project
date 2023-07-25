@@ -33,11 +33,17 @@ class ArticleController extends Controller
     {
         $title = "Crea Articolo";
 
-        $article = "";
+        $action = route("articles.store");
+
+        $buttoName = "Crea";
+
+        $method = "";
+
+        $article = new Article;
 
         $categories = Category::orderBy("name", "ASC")->get();
 
-        return view("Homepage.Articles.create", compact("title","article", "categories"));
+        return view("Homepage.Articles.form", compact("title", "action", "buttoName", "method",  "categories", "article"));
     }
 
     /**
@@ -100,9 +106,15 @@ class ArticleController extends Controller
     
         $title = "Modifica Articolo";
 
+        $action = route("articles.update", $article);
+
+        $buttoName = "Modifica";
+
+        $method = "PUT";
+
         $categories = Category::orderBy("name", "ASC")->get();
 
-        return view("Homepage.Articles.edit", compact("title", "categories", "article"));
+        return view("Homepage.Articles.form", compact("title", "action", "buttoName", "method",  "categories", "article"));
     }
 
     /**
