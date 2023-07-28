@@ -2,7 +2,7 @@
     <main>
 
         <section class="container">
-            
+
             <h2 class="fw-bold text-center py-5">Registrati</h2>
 
             <form class="row" action="/register" method="POST">

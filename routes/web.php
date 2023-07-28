@@ -14,6 +14,8 @@ use App\Http\Controllers\HeroesController;
 
 use App\Http\Controllers\AccountController;
 
+use App\Http\Controllers\AdminController;
+
 
 
 Route::get("/", [PageController::class, "homepage"])->name("homepage");
@@ -54,8 +56,12 @@ Route::middleware('auth')->group(function() {
 
     Route::resource("categories", App\Http\Controllers\CategoryController::class);
 
+
+    
+
 });
 
+Route::get("/admin/editor", [AdminController::class, "index"])->name("admin.index")->middleware(["auth", "admin"]);
 
 
 
