@@ -18,7 +18,7 @@
                         <td class="border-bottom">
                             <div class="d-flex align-items-center justify-content-end">
                                 <button type="submit" class="btn fst-italic text-success" wire:click="editUser({{$user->id}})">Modifica</button>
-                                <button type="submit" class="bg-white border-0 fst-italic text-danger" wire:click="deleteUser({{$user->id}})">Cancella</button>
+                                <button type="submit" class="bg-white border-0 fst-italic text-danger" wire:click="deleteUser({{$user->id}})" onclick="return confirm('Sei sicuro di volerlo eliminare?')">Cancella</button>
                             </div>
                         </td>
                     </tr>

@@ -30,7 +30,7 @@
                                 <form action="{{route('categories.destroy', $category)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="bg-white border-0 fst-italic text-danger">Cancella</button>
+                                    <button type="submit" class="bg-white border-0 fst-italic text-danger" onclick="return confirm('Sei sicuro di volerlo eliminare?')">Cancella</button>
                                 </form>
                             </div>
                         </td>

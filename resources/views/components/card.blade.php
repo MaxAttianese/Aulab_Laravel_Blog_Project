@@ -14,7 +14,7 @@
             <form action="{{route('articles.destroy', $article)}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-sm pe-4 text-danger">Cancella</button>
+                <button type="submit" class="btn btn-sm pe-4 text-danger" onclick="return confirm('Sei sicuro di volerlo eliminare?')">Cancella</button>
             </form>
         </div>
         @endif
