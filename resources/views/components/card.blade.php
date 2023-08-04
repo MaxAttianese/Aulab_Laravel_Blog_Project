@@ -5,7 +5,7 @@
         </div>
         <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{$title}}</h5>
-            <div class="pb-4">@foreach($categories as $category) <span class="small fst-italic pe-1">.{{$category->name}}</span> @endforeach</div>
+            <div class="pb-4">@foreach($article->categories as $category) <span class="small fst-italic pe-1">.{{$category->name}}</span> @endforeach</div>
             <a href="{{route('articles.show', $articleId)}}" class="btn btn-primary">Articolo Completo</a>
         </div>
         @if($article->user_id == auth()->user()->id)
