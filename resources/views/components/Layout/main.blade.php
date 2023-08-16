@@ -9,11 +9,20 @@
 
     @livewireStyles
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     
-    <x-navbar/>
+    <header>
+        <x-navbar/>
+    </header>
 
-    {{$slot}}
+    <main class="bg-white">
+        {{$slot}}
+    </main>
+
+    <footer class="mt-auto">
+        <x-footer/>
+    </footer>
+    
 
     @livewireScripts
 </body>

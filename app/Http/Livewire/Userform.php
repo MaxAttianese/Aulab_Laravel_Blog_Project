@@ -63,7 +63,7 @@ class Userform extends Component
 
         //$this->resetForm();
 
-        $this->mount();
+        $this->resetForm();
 
         $this->emitTo("userlist", "loadUser");
         
@@ -74,15 +74,10 @@ class Userform extends Component
         return view('livewire.userform');
     }
 
-    /*public function resetForm() {
+    public function resetForm() {
 
-        $this->name = "";
-
-        $this->email = "";
-
-        $this->password = "";
-
-    }*/
+        $this->mount();
+    }
 
     public function mount() {
 

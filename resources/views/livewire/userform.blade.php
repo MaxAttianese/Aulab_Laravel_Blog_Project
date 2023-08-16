@@ -10,13 +10,13 @@
                 <div class="col-12 col-md-6">
                     @if($user->id)
                     <div class="text-end">
-                        <button class="btn btn-sm btn-primary" wire:click="mount">Pulisci</button>
+                        <button class="btn btn-sm btn-primary" wire:click="resetForm">Pulisci</button>
                     </div>
                     @endif
 
-                    @if(session()->has("success"))
+                    
                     <x-flashmessage />
-                    @endif
+                    
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="user.name" name="user.name" wire:model="user.name">
